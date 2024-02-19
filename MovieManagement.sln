@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManagement.API", "MovieManagement.API\MovieManagement.API.csproj", "{5648E9CD-AA98-4A63-B325-E1D4589491C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManagement.DataAccess", "MovieManagement.DataAccess\MovieManagement.DataAccess.csproj", "{5E8732F5-32B3-4E2F-B971-90F08A5A8352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieManagement.Domain", "MovieManagement.Domain\MovieManagement.Domain.csproj", "{5B88C5F5-D6B4-4AE1-AD1C-9077313F0602}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +26,13 @@ Global
 		{5648E9CD-AA98-4A63-B325-E1D4589491C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5648E9CD-AA98-4A63-B325-E1D4589491C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5648E9CD-AA98-4A63-B325-E1D4589491C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8732F5-32B3-4E2F-B971-90F08A5A8352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8732F5-32B3-4E2F-B971-90F08A5A8352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8732F5-32B3-4E2F-B971-90F08A5A8352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8732F5-32B3-4E2F-B971-90F08A5A8352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B88C5F5-D6B4-4AE1-AD1C-9077313F0602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B88C5F5-D6B4-4AE1-AD1C-9077313F0602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B88C5F5-D6B4-4AE1-AD1C-9077313F0602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B88C5F5-D6B4-4AE1-AD1C-9077313F0602}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
