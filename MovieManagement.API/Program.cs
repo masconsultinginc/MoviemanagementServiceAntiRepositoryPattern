@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MovieManagement.DataAccess;
+using MovieManagement.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add Entity Framework
-builder.Services.AddDbContext<MoveManagementDbContext>(options =>
+builder.Services.AddDbContext<MovieManagementDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
+
+// Added the UnitOfWork to the DI container
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
@@ -22,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.MapControllers();
 

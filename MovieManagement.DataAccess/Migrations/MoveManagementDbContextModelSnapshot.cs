@@ -9,7 +9,7 @@ using MovieManagement.DataAccess;
 
 namespace MovieManagement.DataAccess.Migrations
 {
-    [DbContext(typeof(MoveManagementDbContext))]
+    [DbContext(typeof(MovieManagementDbContext))]
     partial class MoveManagementDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

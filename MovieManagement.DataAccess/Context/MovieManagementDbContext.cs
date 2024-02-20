@@ -3,9 +3,9 @@ using MovieManagement.Domain;
 
 namespace MovieManagement.DataAccess;
 
-public class MoveManagementDbContext : DbContext
+public class MovieManagementDbContext : DbContext
 {
-    public MoveManagementDbContext(DbContextOptions<MoveManagementDbContext> options) : base(options)
+    public MovieManagementDbContext(DbContextOptions<MovieManagementDbContext> options) : base(options)
     {
 
     }

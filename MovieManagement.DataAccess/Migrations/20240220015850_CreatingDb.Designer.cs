@@ -10,7 +10,7 @@ using MovieManagement.DataAccess;
 
 namespace MovieManagement.DataAccess.Migrations
 {
-    [DbContext(typeof(MoveManagementDbContext))]
+    [DbContext(typeof(MovieManagementDbContext))]
     [Migration("20240220015850_CreatingDb")]
     partial class CreatingDb
     {
