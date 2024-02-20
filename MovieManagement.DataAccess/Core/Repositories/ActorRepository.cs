@@ -25,7 +25,6 @@ public class ActorRepository : GenericRepository<Actor>, IActorRepository
             _logger.LogError(ex, "{Repo} All method error", typeof(ActorRepository));
             return new List<Actor>();
         }
-
     }
 
     public override async Task<bool> Upsert(Actor entity)
@@ -70,5 +69,11 @@ public class ActorRepository : GenericRepository<Actor>, IActorRepository
             _logger.LogError(ex, "{Repo} Delete method error", typeof(ActorRepository));
             return false;
         }
+    }
+
+    public async Task<IEnumerable<Actor>> GetActorsWithMovies()
+    {
+        var actorsWithMovies = await _context.Actors.Include(u => u.Movies).ToListAsync();
+        return actorsWithMovies;
     }
 }

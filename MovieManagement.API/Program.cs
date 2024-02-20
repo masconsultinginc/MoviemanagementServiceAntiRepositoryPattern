@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using MovieManagement.DataAccess;
 using MovieManagement.Domain;
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 // Add Entity Framework
 builder.Services.AddDbContext<MovieManagementDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
+
+builder.Services.AddMvc()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 // Added the UnitOfWork to the DI container
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
