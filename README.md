@@ -1,6 +1,6 @@
 # MoviemanagementService
 
-## Genric Repository with Unit of Work
+## Generic Repository with Unit of Work
 
 Inspired by two **YouTuber's** to design generic repository and unit of work.  
 Combining the two videos provided insight into using __Async/Await__ with __Task__ for more performative 
