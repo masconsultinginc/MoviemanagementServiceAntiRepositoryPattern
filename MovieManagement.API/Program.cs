@@ -13,12 +13,15 @@ builder.Services.AddSwaggerGen();
 // Add Entity Framework
 builder.Services.AddDbContext<MovieManagementDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
+builder.Services.AddDbContext<MovieGenreDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 
 builder.Services.AddMvc()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 // Added the dbContext anti-repo pattern
 builder.Services.AddScoped<ActorData>();
+builder.Services.AddScoped<GenreData>();
 
 var app = builder.Build();
 
