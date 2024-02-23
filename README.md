@@ -1,12 +1,14 @@
-# MoviemanagementService
+# MoviemanagementServiceAntiRepositoryPattern
 
-## Generic Repository with Unit of Work
+## AntiRepository Pattern
 
-Inspired by two **YouTuber's** to design generic repository and unit of work.  
-Combining the two videos provided insight into using __Async/Await__ with __Task__ for more performative 
-CRUD request/response.
+Inspired by **PluralSight** Julie Lerman using Domain Driven Design (DDD).
+This training video provided insight into using __Async/Await__ with __Task__ for more performative 
+CRUD request/response.  Alowing for the removal of the Repository/UnitOfWork Patterns.  Using dbContext
+and dbSet as the built-in repository and unit-of-work.  This anti-pattern allowes for more finer controll
+over the bacic CRUD operations (which is fine for bacic CRUD operation).  Using LINQ and AsNoTacking promotes
+using DTO's for limiting client responses. (filtering, pagination, complex graphs, etc.)
 
 All development was done in C# .net 8.
 
-**Generic Repository and Unit of Work .NET 7: A Comprehensive Guide** by Code Unparalleled
-**Step by Step - Repository Pattern and Unit of Work with Asp.Net Core 5** by Mohamad Lawand
+**Entiy Framework 6 in the Enterprise** by Julie Lerman
