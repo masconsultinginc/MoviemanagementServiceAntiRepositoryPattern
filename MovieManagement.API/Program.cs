@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using MovieManagement.DataAccess;
-using MovieManagement.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +17,8 @@ builder.Services.AddDbContext<MovieManagementDbContext>(options =>
 builder.Services.AddMvc()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-// Added the UnitOfWork to the DI container
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+// Added the dbContext anti-repo pattern
+builder.Services.AddScoped<ActorData>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieManagement.DataAccess;
 using MovieManagement.Domain;
 
 namespace MovieManagement.API;
@@ -8,15 +9,15 @@ namespace MovieManagement.API;
 public class ActorsController : ControllerBase
 {
     private readonly ILogger<ActorsController> _logger;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ActorData _repo;
 
     public ActorsController(
         ILogger<ActorsController> logger,
-        IUnitOfWork unitOfWork
+        ActorData actorData
     )
     {
         _logger = logger;
-        _unitOfWork = unitOfWork;
+        _repo = actorData;
     }
 
     [HttpPost]
@@ -24,11 +25,7 @@ public class ActorsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
-            // This may not be needed???
-            //actor.Id = Guid.NewGuid();
-
-            await _unitOfWork.Actors.Add(actor);
-            await _unitOfWork.CompleteAsync();
+            await _repo.AddActor(actor);
 
             return CreatedAtAction("GetActor", new { actor.Id }, actor);
         }
@@ -39,7 +36,7 @@ public class ActorsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetActor(Guid id)
     {
-        var actor = await _unitOfWork.Actors.GetById(id);
+        var actor = await _repo.FindActor(id);
 
         if (actor == null)
             return NotFound(); // 404 HTTP Status code
@@ -50,31 +47,26 @@ public class ActorsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var actors = await _unitOfWork.Actors.All();
+        var actors = await _repo.GetAllActors();
         return Ok(actors);
     }
 
-    [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateActor(Guid id, Actor actor)
+    [HttpPatch]
+    public async Task<IActionResult> UpdateActor(Actor actor)
     {
-        if (id != actor.Id)
-            return BadRequest();
-
-        await _unitOfWork.Actors.Upsert(actor);
-        await _unitOfWork.CompleteAsync();
+        await _repo.UpdateActor(actor);
 
         return NoContent();
     }
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteActor(Guid id)
     {
-        var actor = await _unitOfWork.Actors.GetById(id);
+        var actor = await _repo.FindActor(id);
 
         if (actor == null)
             return BadRequest();
 
-        await _unitOfWork.Actors.Delete(id);
-        await _unitOfWork.CompleteAsync();
+        await _repo.RemoveActor(id);
 
         return Ok(actor);
     }
@@ -82,7 +74,7 @@ public class ActorsController : ControllerBase
     [HttpGet("movies")]
     public async Task<IActionResult> GetWithMovies()
     {
-        var actors = await _unitOfWork.Actors.GetActorsWithMovies();
+        var actors = await _repo.GetActorWithMovies();
         return Ok(actors);
     }
 
