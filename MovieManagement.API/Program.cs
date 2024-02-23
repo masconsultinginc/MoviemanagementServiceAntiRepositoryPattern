@@ -15,6 +15,8 @@ builder.Services.AddDbContext<MovieManagementDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 builder.Services.AddDbContext<MovieGenreDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
+builder.Services.AddDbContext<MovieDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 
 builder.Services.AddMvc()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -22,6 +24,7 @@ builder.Services.AddMvc()
 // Added the dbContext anti-repo pattern
 builder.Services.AddScoped<ActorData>();
 builder.Services.AddScoped<GenreData>();
+builder.Services.AddScoped<MovieData>();
 
 var app = builder.Build();
 
